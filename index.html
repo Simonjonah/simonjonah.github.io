@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -446,7 +447,152 @@ nav {
   margin-bottom: 12px;
 }
 
-.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
+
+/* EDUCATION */
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s;
+}
+
+.edu-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+.edu-card:hover::after { transform: scaleX(1); }
+
+.edu-card.primary { grid-column: 1 / -1; }
+
+.edu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--accent);
+  background: rgba(99,102,241,0.1);
+  border: 1px solid var(--border2);
+  padding: 4px 10px;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.edu-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.edu-degree {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.edu-school {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent2);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.edu-period {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.edu-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.edu-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  letter-spacing: 0.04em;
+}
+
+/* CERT ROW */
+.cert-row {
+  margin-top: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.2s;
+}
+
+.cert-row:hover { border-color: var(--border2); }
+
+.cert-index {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  min-width: 28px;
+}
+
+.cert-info { flex: 1; }
+
+.cert-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.cert-issuer {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.cert-year {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
 
 /* CONTACT */
 .contact-box {
@@ -559,13 +705,14 @@ nav {
   .project-card.featured { grid-column: 1; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
   .hero { margin-bottom: 60px; }
+  .education-grid { grid-template-columns: 1fr; }
+  .edu-card.primary { grid-column: 1; }
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
   .container { padding: 0 16px 60px; }
 
-  /* Nav — hamburger */
   nav {
     flex-wrap: wrap;
     gap: 0;
@@ -591,44 +738,43 @@ nav {
   }
   .nav-links li:last-child a { border-bottom: none; }
 
-  /* Hero */
   .hero { margin-bottom: 48px; }
   .hero-name { font-size: clamp(44px, 13vw, 72px); }
   .hero-bio { font-size: 15px; }
   .hero-ctas { flex-direction: column; }
   .btn-primary, .btn-ghost { width: 100%; text-align: center; padding: 14px 20px; }
 
-  /* Stats */
   .stats-row {
     grid-template-columns: 1fr 1fr;
     margin-bottom: 48px;
   }
   .stat-num { font-size: 26px; }
 
-  /* Section */
   .section { margin-bottom: 56px; }
   .section-header { margin-bottom: 28px; }
   .section-tag { font-size: 10px; }
 
-  /* Projects */
   .projects-grid { grid-template-columns: 1fr; gap: 12px; }
   .project-card.featured { grid-column: 1; }
   .project-card { padding: 20px; }
   .project-name { font-size: 17px; }
 
-  /* Skills */
   .skills-grid { grid-template-columns: 1fr; gap: 12px; }
 
-  /* Timeline */
   .timeline { padding-left: 24px; }
   .timeline-dot { left: -20px; }
   .tl-role { font-size: 16px; }
 
-  /* Contact */
   .contact-box { padding: 32px 20px; }
   .contact-title { font-size: 26px; }
   .contact-links { flex-direction: column; align-items: stretch; }
   .contact-link { justify-content: center; }
+
+  .education-grid { grid-template-columns: 1fr; gap: 12px; }
+  .edu-card.primary { grid-column: 1; }
+  .edu-card { padding: 20px; }
+  .edu-degree { font-size: 16px; }
+  .cert-row { flex-wrap: wrap; gap: 10px; }
 }
 </style>
 </head>
@@ -877,6 +1023,80 @@ nav {
     </div>
   </div>
 
+
+
+  <!-- EDUCATION -->
+  <div id="education-section" class="pagesection">
+    <div class="section">
+      <div class="section-header">
+        <div class="section-tag">// EDUCATION</div>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Degree Cards -->
+      <div class="education-grid">
+        <div class="edu-card primary">
+          <div class="edu-badge"><div class="edu-badge-dot"></div>DEGREE</div>
+          <div class="edu-degree">B.Sc.(Edu) Accounting</div>
+          <div class="edu-school">University of Uyo — Uyo, Nigeria</div>
+          <div class="edu-period">2021 — 2025</div>
+          <div class="edu-desc">Bachelor of Science in Education (Accounting) with a strong foundation in data analysis, logical problem-solving, and structured information management. Experienced in working with financial data, financial technology, ensuring accuracy, and applying systematic approaches—skills directly transferable to software development, particularly in backend systems, database management, payroll managemant, financial summary and business logic implementation.</div>
+          <div class="edu-tags">
+            <span class="edu-tag">Auditing</span>
+            <span class="edu-tag">Taxation</span>
+            <span class="edu-tag">Financial Reporting</span>
+            <span class="edu-tag">Accounting Records</span>
+            <span class="edu-tag">Payrolls</span>
+            <span class="edu-tag">Financial Technology</span>
+          </div>
+        </div>
+
+       
+        
+      </div>
+
+      <!-- Certifications -->
+      <div class="section-header" style="margin-top: 48px;">
+        <div class="section-tag">// CERTIFICATIONS</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-index">01</div>
+        <div class="cert-info">
+          <div class="cert-name">The Complete Web Developer Bootcamp</div>
+          <div class="cert-issuer">Udemy · Angela Yu</div>
+        </div>
+        <div class="cert-year">2020</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-index">02</div>
+        <div class="cert-info">
+          <div class="cert-name">Node.js, Express, MongoDB & More: The Complete Bootcamp</div>
+          <div class="cert-issuer">Udemy · Jonas Schmedtmann</div>
+        </div>
+        <div class="cert-year">2021</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-index">03</div>
+        <div class="cert-info">
+          <div class="cert-name">React — The Complete Guide</div>
+          <div class="cert-issuer">Udemy · Maximilian Schwarzmüller</div>
+        </div>
+        <div class="cert-year">2022</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-index">04</div>
+        <div class="cert-info">
+          <div class="cert-name">Laravel & PHP: Build a Social Network</div>
+          <div class="cert-issuer">Udemy</div>
+        </div>
+        <div class="cert-year">2022</div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- CONTACT -->
   <div id="contact-section" class="pagesection">
     <div class="section">
@@ -901,7 +1121,7 @@ nav {
 
 </div>
 
-<script>
+<!-- <script>
 function toggleMenu() {
   const nav = document.getElementById('nav-links');
   const btn = document.getElementById('hamburger');
@@ -918,5 +1138,26 @@ function showSection(name, el) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
+ -->
+
+
+ <script>
+function toggleMenu() {
+  const nav = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function showSection(name, el) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(name + '-section').classList.add('active');
+  if (el) el.classList.add('active');
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
 </body>
 </html>
